@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 
 /* 
- * Make changes in branch ghpage
+ * Make changes in branch main
  * publish to GH Pages using npm run deploy
  */
 
