@@ -4,7 +4,11 @@ import './index.css';
 
 /* 
  * Make changes in branch main
- * publish to GH Pages using npm run deploy
+ * Publish to GH Pages using npm run deploy
+ * Run game with npm start (same as npm run start)
+ * 
+ * See also project 'cypress' which contains tests
+ * that will test the deployed version at eric-g.github.io/my-app
  */
 
 function Square(props) {
@@ -27,6 +31,9 @@ class Board extends React.Component {
 
     handleClick(i) {
         const squares = this.state.squares.slice();
+        if (calculateWinner(squares) || squares[i]) {
+            return;
+        }
         squares[i] = this.state.xIsNext ? 'X' : 'O';
         this.setState({
             squares: squares,
@@ -44,8 +51,13 @@ class Board extends React.Component {
     }
 
     render() {
-        var player = this.state.xIsNext ? 'X' : 'O';
-        const status = 'Next playa: ' + player;
+        const winner = calculateWinner(this.state.squares);
+        let status;
+        if (winner) {
+            status = 'Winner: ' + winner;
+        } else {
+            status = 'Next playa: ' + (this.state.xIsNext ? 'X' : 'O');
+        }
 
         return (
             <div>
@@ -90,3 +102,23 @@ class Game extends React.Component {
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<Game />);
+
+function calculateWinner(squares) {
+    const lines = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6],
+    ];
+    for (let i = 0; i < lines.length; i++) {
+      const [a, b, c] = lines[i];
+      if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+        return squares[a];
+      }
+    }
+    return null;
+  }
