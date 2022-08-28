@@ -7,7 +7,7 @@ import './index.css';
  * Publish to GH Pages using npm run deploy
  * Run game with npm start (same as npm run start)
  * 
- * See also project 'cypress' which contains tests
+ * See also project 'cypress' which contains tests in spec.cy.js
  * that will test the deployed version at eric-g.github.io/my-app
  */
 
@@ -19,6 +19,12 @@ function Square(props) {
    );
 }
 
+function Reset(props) {
+    return (
+        <button className="reset" id="reset" onClick={props.onClick}>Reset</button>
+    );
+}
+
 class Board extends React.Component {
 
     constructor(props) {
@@ -27,6 +33,7 @@ class Board extends React.Component {
             squares: Array(9).fill(null),
             xIsNext: true,
         };
+        this.baseState = this.state;
     }
 
     handleClick(i) {
@@ -41,6 +48,11 @@ class Board extends React.Component {
         });
     }
 
+    clickReset() {
+        console.log('Reseting the game...');
+        this.setState(this.baseState);
+    }
+
     renderSquare(i) {
       return (
         <Square
@@ -48,6 +60,14 @@ class Board extends React.Component {
           onClick={() => this.handleClick(i)}
         />
       );
+    }
+
+    renderReset() {
+        return (
+            <Reset 
+            onClick={() => this.clickReset()}
+            />
+        );
     }
 
     render() {
@@ -77,6 +97,7 @@ class Board extends React.Component {
                     {this.renderSquare(7)}
                     {this.renderSquare(8)}
                 </div>
+                <div className="status">{this.renderReset()}</div>
             </div>
         );
     }

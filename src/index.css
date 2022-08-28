@@ -16,6 +16,11 @@ body {
   .status {
     margin-bottom: 10px;
   }
+
+  .reset {
+    margin: 10px;
+    float: right;
+  }
   
   .square {
     background: #fff;
