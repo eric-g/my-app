@@ -32,6 +32,7 @@ class Board extends React.Component {
         this.state = {
             squares: Array(9).fill(null),
             xIsNext: true,
+            turn: 0,
         };
         this.baseState = this.state;
     }
@@ -45,7 +46,9 @@ class Board extends React.Component {
         this.setState({
             squares: squares,
             xIsNext: !this.state.xIsNext,
+            turn: this.state.turn +1,
         });
+      
     }
 
     clickReset() {
@@ -75,6 +78,8 @@ class Board extends React.Component {
         let status;
         if (winner) {
             status = 'Winner: ' + winner;
+        } else if (this.state.turn > 8) {
+            status = "Tie Game!";
         } else {
             status = 'Next playa: ' + (this.state.xIsNext ? 'X' : 'O');
         }
