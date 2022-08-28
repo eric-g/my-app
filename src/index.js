@@ -97,7 +97,7 @@ class Board extends React.Component {
                     {this.renderSquare(7)}
                     {this.renderSquare(8)}
                 </div>
-                <div className="reset">{this.renderReset()}</div>
+                <div>{this.renderReset()}</div>
             </div>
         );
     }
