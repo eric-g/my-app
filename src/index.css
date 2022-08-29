@@ -21,7 +21,25 @@ body {
     margin: 10px;
     float: right;
   }
+
+  /* For mobile phones: */
+[class*="square"] {
+  background: #fff;
+  border: 1px solid #999;
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 34px;
+  height: 60px;
+  margin-right: 11px;
+  margin-top: 11px;
+  padding: 0;
+  text-align: center;
+  width: 60px;
+}
   
+  @media only screen and (min-width: 768px) {
+    /* For desktop: */
   .square {
     background: #fff;
     border: 1px solid #999;
@@ -36,6 +54,7 @@ body {
     text-align: center;
     width: 120px;
   }
+}
   
   .square:focus {
     outline: none;
