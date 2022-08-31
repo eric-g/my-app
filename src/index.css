@@ -10,7 +10,7 @@ body {
   .board-row:after {
     clear: both;
     content: "";
-    display: table;
+    #display: table;
   }
   
   .status {
@@ -58,6 +58,11 @@ body {
   
   .square:focus {
     outline: none;
+  }
+
+  .square:hover {
+   border-width: 3px;
+   border-color: lightblue;
   }
   
   .kbd-navigation .square:focus {

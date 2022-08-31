@@ -16,7 +16,7 @@ function Square(props) {
   
     return (
         <button className="square" onClick={props.onClick}>
-           <div style={props.value == 'X' ? {color: 'red'} : {color: 'blue'}}>{props.value}</div> 
+           <div style={props.value === 'X' ? {color: 'red'} : {color: 'blue'}}>{props.value}</div> 
         </button>
     );
 }
