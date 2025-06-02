@@ -1,6 +1,6 @@
 # React-based Chess Game
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is deployed at: https://eric-g.github.io/my-app/
 
 ## Available Scripts!
 
